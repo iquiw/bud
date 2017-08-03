@@ -5,5 +5,11 @@
   "license": "ISC",
   "dependencies": {
     "chart.js": "^2.6.0"
+  },
+  "devDependencies": {
+    "fly-rollup": "^2.1.0",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "taskr": "^1.1.0"
   }
 }
