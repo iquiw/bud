@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
-    "rollup": "rollup -c rollup-config.js"
+    "rollup": "rollup -c rollup-config.js",
+    "watch": "rollup -c rollup-config.js -w"
   },
   "dependencies": {
     "chart.js": "^2.6.0"
