@@ -6,6 +6,7 @@ export default {
   plugins: [ commonjs(), resolve() ],
   output: {
     file: 'dist/index.js',
-    format: 'iife'
+    format: 'iife',
+    sourcemap: true
   }
 };
