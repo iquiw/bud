@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "ISC",
   "scripts": {
+    "test": "ava",
     "rollup": "rollup -c rollup-config.js",
     "watch": "rollup -c rollup-config.js -w"
   },
@@ -11,8 +12,16 @@
     "chart.js": "^2.6.0"
   },
   "devDependencies": {
+    "ava": "^0.23.0",
+    "babel-register": "^6.26.0",
     "rollup": "^0.50.0",
     "rollup-plugin-commonjs": "^8.2.5",
     "rollup-plugin-node-resolve": "^3.0.0"
+  },
+  "ava": {
+    "require": [ "babel-register" ]
+  },
+  "babel": {
+    "presets": [ "@ava/stage-4" ]
   }
 }
