@@ -11,6 +11,7 @@ test('Burndown', t => {
   let issues = [
     Issue.closed(day(2017, 10, 29), day(2017, 10, 31)),
     Issue.closed(day(2017, 10, 30), day(2017, 11, 6)),
+    Issue.closed(day(2017, 10, 30), day(2017, 11, 3)),
     Issue.opened(day(2017, 11,  1)),
     Issue.opened(day(2017, 11,  2)),
   ];
@@ -18,10 +19,10 @@ test('Burndown', t => {
   let { downs, ups, velocityTotal, velocityClose }
       = burndown.burndown(day(2017, 10, 30), day(2017, 11, 10));
 
-  t.deepEqual(downs, [2, 1, 2, 3, 3, 2, 2, 2, 2, 2]);
-  t.deepEqual(ups, [0, 1, 1, 1, 1, 2, 2, 2, 2, 2]);
-  t.is(velocityTotal, 0);
-  t.is(velocityClose, - 2 / 9);
+  t.deepEqual(downs, [3, 2, 3, 4, 3, 2, 2, 2, 2, 2]);
+  t.deepEqual(ups, [0, 1, 1, 1, 2, 3, 3, 3, 3, 3]);
+  t.is(velocityTotal, - 1 / 9);
+  t.is(velocityClose, - 3 / 9);
 });
 
 test('All open', t => {
