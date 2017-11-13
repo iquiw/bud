@@ -1,10 +1,11 @@
 import test from 'ava';
 
 import moment from 'moment';
+import Day from '../lib/day';
 import { Burndown, Issue } from '../lib/burndown';
 
 function day(y, m, d) {
-  return moment([y, m - 1, d]);
+  return new Day(y, m, d);
 }
 
 test('Burndown', t => {
