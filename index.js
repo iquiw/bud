@@ -1,6 +1,6 @@
 import moment from 'moment';
 
-import { Burndown, Issue } from './lib/burndown';
+import { Burndown } from './lib/burndown';
 import DayChart from './lib/daychart';
 import { issues, firstDate, lastDate } from './issues';
 
