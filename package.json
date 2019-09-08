@@ -9,19 +9,23 @@
     "watch": "rollup -c rollup-config.js -w"
   },
   "dependencies": {
-    "chart.js": "^2.6.0"
+    "chart.js": "^2.8.0"
   },
   "devDependencies": {
-    "ava": "^0.23.0",
+    "ava": "^2.3.0",
     "babel-register": "^6.26.0",
-    "rollup": "^0.50.0",
-    "rollup-plugin-commonjs": "^8.2.5",
-    "rollup-plugin-node-resolve": "^3.0.0"
+    "rollup": "^1.20.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "ava": {
-    "require": [ "babel-register" ]
+    "require": [
+      "babel-register"
+    ]
   },
   "babel": {
-    "presets": [ "@ava/stage-4" ]
+    "presets": [
+      "@ava/stage-4"
+    ]
   }
 }
