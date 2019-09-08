@@ -9,7 +9,8 @@
     "watch": "rollup -c rollup-config.js -w"
   },
   "dependencies": {
-    "chart.js": "^2.8.0"
+    "chart.js": "^2.8.0",
+    "chartjs-plugin-datalabels": "^0.6.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
