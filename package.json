@@ -5,8 +5,8 @@
   "license": "ISC",
   "scripts": {
     "test": "ava",
-    "rollup": "rollup -c rollup-config.js",
-    "watch": "rollup -c rollup-config.js -w"
+    "build": "rollup -c rollup.config.js",
+    "watch": "rollup -c rollup.config.js -w"
   },
   "dependencies": {
     "chart.js": "^2.8.0",

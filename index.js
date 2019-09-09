@@ -1,11 +1,33 @@
 import moment from 'moment';
 
-import { Burndown } from './lib/burndown';
+import { Burndown, Issue } from './lib/burndown';
 import DayChart from './lib/daychart';
 import Day from './lib/day';
-import { issues, startDay, endDay, dueDay } from './issues';
 
-let burndown = new Burndown(issues);
+export function drawDayChart(vis) {
+  let burndown = new Burndown(
+    vis.issues.map((issue) => new Issue(Day.fromString(issue.open),
+                                        issue.close ? Day.fromString(issue.close) : null)),
+    {
+      skippedDays: [
+        new Day(2019, 9, 16),
+        new Day(2019, 9, 23),
+        new Day(2019, 10, 22),
+      ]
+    });
 
-let dc = new DayChart(document.getElementById('myChart').getContext('2d'));
-dc.draw(startDay, endDay, dueDay, burndown);
+  let dc = new DayChart(document.getElementById('myChart').getContext('2d'), {
+    title: {
+      display: true,
+      position: 'bottom',
+      text: vis.version,
+    },
+    showEstimate: true
+  });
+  dc.draw(
+    Day.fromString(vis.startDate),
+    Day.fromString(vis.endDate),
+    Day.fromString(vis.dueDate),
+    burndown
+  );
+}
