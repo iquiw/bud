@@ -24,7 +24,7 @@ test('Burndown', t => {
     Issue.opened(day(2017, 11,  1)),
     Issue.opened(day(2017, 11,  2)),
   ];
-  let burndown = new Burndown(issues);
+  let burndown = new Burndown(issues, { skipHoliday: false });
   let { downs, ups, velocityTotal, velocityClose }
       = burndown.burndown(day(2017, 10, 30), day(2017, 11, 10));
 
@@ -41,7 +41,7 @@ test('All open', t => {
     Issue.opened(day(2017, 11,  1)),
     Issue.opened(day(2017, 11,  2)),
   ];
-  let burndown = new Burndown(issues);
+  let burndown = new Burndown(issues, { skipHoliday: false });
   let { downs, ups, velocityTotal, velocityClose }
       = burndown.burndown(day(2017, 10, 30), day(2017, 11, 2));
 
@@ -58,7 +58,7 @@ test('All closed', t => {
     Issue.closed(day(2017, 11,  1), day(2017, 11, 6)),
     Issue.closed(day(2017, 11,  2), day(2017, 11, 3)),
   ];
-  let burndown = new Burndown(issues);
+  let burndown = new Burndown(issues, { skipHoliday: false });
   let { downs, ups, velocityTotal, velocityClose }
       = burndown.burndown(day(2017, 10, 30), day(2017, 11, 6));
 
@@ -75,7 +75,7 @@ test('Disable skipWeekend option', t => {
     Issue.opened(day(2017, 11,  1)),
     Issue.opened(day(2017, 11,  2)),
   ];
-  let burndown = new Burndown(issues, { skipWeekend: false });
+  let burndown = new Burndown(issues, { skipWeekend: false, skipHoliday: false });
   let { downs, ups, velocityTotal, velocityClose }
       = burndown.burndown(day(2017, 10, 30), day(2017, 11, 10));
 
@@ -93,6 +93,7 @@ test('Specify skippedDays option', t => {
     Issue.opened(day(2017, 11,  2)),
   ];
   let burndown = new Burndown(issues, {
+    skipHoliday: false,
     skippedDays: [day(2017, 10, 31), day(2017, 11, 6)]
   });
   let { downs, ups, velocityTotal, velocityClose }
@@ -113,6 +114,7 @@ test('Specify skippedDays option with skipWeekend disabled', t => {
   ];
   let burndown = new Burndown(issues, {
     skipWeekend: false,
+    skipHoliday: false,
     skippedDays: [day(2017, 10, 31), day(2017, 11, 3), day(2017, 11, 6)]
   });
   let { downs, ups, velocityTotal, velocityClose }
@@ -122,4 +124,30 @@ test('Specify skippedDays option with skipWeekend disabled', t => {
   t.deepEqual(ups, [0, 1, 1, 1, 1, 2, 2, 2, 2]);
   t.is(velocityTotal, 0);
   t.is(velocityClose, - 2 / 8);
+});
+
+/*
+ *        9月 2019
+ * 15 16 17 18 19 20 21
+ *    ^
+ * 22 23 24 25 26 27 28
+ *    ^
+ */
+test('Holidays skipped by skipHoliday', t => {
+  let issues = [
+    Issue.closed(day(2019, 9, 15), day(2019, 9, 15)),
+    Issue.closed(day(2019, 9, 15), day(2019, 9, 18)),
+    Issue.opened(day(2019, 9, 16)),
+    Issue.opened(day(2019, 9, 17)),
+  ];
+  let burndown = new Burndown(issues, {
+    skipWeekend: false
+  });
+  let { downs, ups, velocityTotal, velocityClose }
+      = burndown.burndown(day(2019, 9, 15), day(2019, 9, 18));
+
+  t.deepEqual(downs, [1, 3, 2]);
+  t.deepEqual(ups, [1, 1, 2]);
+  t.is(velocityTotal, 1 / 2);
+  t.is(velocityClose, - 1 / 2);
 });

@@ -7,14 +7,7 @@ import Day from './lib/day';
 export function drawDayChart(vis) {
   let burndown = new Burndown(
     vis.issues.map((issue) => new Issue(Day.fromString(issue.open),
-                                        issue.close ? Day.fromString(issue.close) : null)),
-    {
-      skippedDays: [
-        new Day(2019, 9, 16),
-        new Day(2019, 9, 23),
-        new Day(2019, 10, 22),
-      ]
-    });
+                                        issue.close ? Day.fromString(issue.close) : null)));
 
   let dc = new DayChart(document.getElementById('myChart').getContext('2d'), {
     title: {

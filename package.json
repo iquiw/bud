@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "chart.js": "^2.8.0",
-    "chartjs-plugin-datalabels": "^0.7.0"
+    "chartjs-plugin-datalabels": "^0.7.0",
+    "japanese-holidays": "^1.0.9"
   },
   "devDependencies": {
     "@babel/register": "^7.6.0",
