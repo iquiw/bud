@@ -68,6 +68,24 @@ test('All closed', t => {
   t.is(velocityClose, - 4 / 5);
 });
 
+test('All closed before end date', t => {
+  let issues = [
+    Issue.closed(day(2017, 10, 29), day(2017, 10, 31)),
+    Issue.closed(day(2017, 10, 30), day(2017, 11, 6)),
+    Issue.closed(day(2017, 10, 30), day(2017, 11, 3)),
+    Issue.closed(day(2017, 11,  1), day(2017, 11, 3)),
+    Issue.closed(day(2017, 11,  2), day(2017, 11, 3)),
+  ];
+  let burndown = new Burndown(issues, { skipHoliday: false });
+  let { downs, ups, velocityTotal, velocityClose }
+      = burndown.burndown(day(2017, 10, 30), day(2017, 11, 10));
+
+  t.deepEqual(downs, [3, 2, 3, 4, 1, 0, 0, 0, 0, 0]);
+  t.deepEqual(ups,   [0, 1, 1, 1, 4, 5, 5, 5, 5, 5]);
+  t.is(velocityTotal, - 3 / 5);
+  t.is(velocityClose, - 5 / 5);
+});
+
 test('Disable skipWeekend option', t => {
   let issues = [
     Issue.closed(day(2017, 10, 29), day(2017, 10, 31)),
