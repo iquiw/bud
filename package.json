@@ -15,10 +15,10 @@
   },
   "devDependencies": {
     "@babel/register": "^7.10.5",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
     "ava": "^3.10.1",
-    "rollup": "^2.22.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "rollup": "^2.22.0"
   },
   "ava": {
     "require": [
