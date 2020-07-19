@@ -14,20 +14,17 @@
     "japanese-holidays": "^1.0.9"
   },
   "devDependencies": {
-    "@babel/register": "^7.10.5",
+    "@ava/babel": "^1.0.1",
     "@rollup/plugin-commonjs": "^14.0.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
     "ava": "^3.10.1",
-    "rollup": "^2.22.0"
+    "esm": "^3.2.25",
+    "rollup": "^2.22.1"
   },
   "ava": {
     "require": [
-      "@babel/register"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "@ava/stage-4"
-    ]
+      "esm"
+    ],
+    "babel": true
   }
 }
