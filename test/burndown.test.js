@@ -1,8 +1,7 @@
 import test from 'ava';
 
-import moment from 'moment';
-import Day from '../lib/day';
-import { Burndown, Issue } from '../lib/burndown';
+import Day from '../lib/day.js';
+import { Burndown, Issue } from '../lib/burndown.js';
 
 function day(y, m, d) {
   return new Day(y, m, d);

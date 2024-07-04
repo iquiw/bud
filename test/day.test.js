@@ -1,6 +1,6 @@
 import test from 'ava';
 
-import Day from '../lib/day';
+import Day from '../lib/day.js';
 
 test('toDate() returns Date instance of the day', t => {
   const day = new Day(2019, 9, 11);
