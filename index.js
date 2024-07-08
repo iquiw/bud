@@ -19,6 +19,7 @@ export function drawDayChart(vis, burndownOptions, dayChartOptions) {
     Day.fromString(vis.startDate),
     Day.fromString(vis.endDate),
     Day.fromString(vis.dueDate),
-    burndown
+    burndown,
+    vis.altChart
   );
 }
