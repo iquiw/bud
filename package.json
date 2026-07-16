@@ -10,15 +10,15 @@
     "watch": "rollup -c rollup.config.js -w"
   },
   "dependencies": {
-    "chart.js": "^4.4.3",
+    "chart.js": "^4.5.1",
     "chartjs-plugin-datalabels": "^2.2.0",
-    "dayjs": "^1.11.11",
+    "dayjs": "^1.11.21",
     "japanese-holidays": "^1.0.10"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^29.0.0",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "ava": "^6.4.1",
-    "rollup": "^4.59.0"
+    "@rollup/plugin-commonjs": "^29.0.3",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "ava": "^8.0.1",
+    "rollup": "^4.62.2"
   }
 }
