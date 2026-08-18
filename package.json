@@ -12,13 +12,13 @@
   "dependencies": {
     "chart.js": "^4.5.1",
     "chartjs-plugin-datalabels": "^2.2.0",
-    "dayjs": "^1.11.21",
+    "dayjs": "^1.11.23",
     "japanese-holidays": "^1.0.10"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.3",
     "@rollup/plugin-node-resolve": "^16.0.3",
     "ava": "^8.0.1",
-    "rollup": "^4.62.2"
+    "rollup": "^4.62.4"
   }
 }
